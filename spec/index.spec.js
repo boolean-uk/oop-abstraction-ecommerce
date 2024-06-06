@@ -7,8 +7,8 @@ describe('Basket', () => {
 
     beforeEach(() => {
         basket = new Basket
-        eggs = new Product('eggs', 2.30, 'grassfed freerange chicken eggs')
-        yoghurt = new Product('yoghurt', 1.45, 'grassfed freerange cow milk')
+        eggs = new Product('eggs', 2.30, 'grassfed freerange chicken eggs', 6)
+        yoghurt = new Product('yoghurt', 1.45, 'grassfed freerange cow milk', 3)
     })
 
     it('should exist', () => {
@@ -117,5 +117,22 @@ describe('Basket', () => {
 
         expect(Number(basket.total.toFixed(2))).toBe(9.80)
         expect(result).toBeDefined()
+    })
+
+    it('should update original product quantity when adding item to basket', () => {
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+
+        expect(basket.products[0].productQuantity).toBe(3)
+
+        basket.addProduct(yoghurt)
+        basket.addProduct(yoghurt)
+
+        expect(basket.products[1].productQuantity).toBe(1)
+
+        basket.removeProduct(eggs)
+
+        expect(basket.products[0].productQuantity).toBe(4)
     })
 })

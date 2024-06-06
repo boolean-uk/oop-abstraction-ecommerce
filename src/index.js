@@ -17,6 +17,7 @@ class Basket {
         }
 
         this.total += product.price
+        product.productQuantity--
     }
 
     findProduct(product) {
@@ -40,6 +41,7 @@ class Basket {
         }
 
         this.total -= foundProduct.price
+        product.productQuantity++
 
         return foundProduct
     }
@@ -64,10 +66,11 @@ class Basket {
 }
 
 class Product {
-    constructor(name, price, description) {
+    constructor(name, price, description, productQuantity) {
         this.name = name
         this.price = price
         this.description = description
+        this.productQuantity = productQuantity
     }
 
     details() {
