@@ -49,6 +49,47 @@ class Basket {
 
         return foundProduct
     }
+
+    generateOrder() {
+        const orderData = []
+        let totalOrderPrice = 0
+
+        this.#contents.forEach((element) => {
+            const totalLinePrice = (
+                element.product.price * element.quantity
+            )
+
+            totalOrderPrice += totalLinePrice
+
+
+            orderData.push({
+                name: element.product.name,
+                quantity: element.quantity,
+                price: totalLinePrice.toFixed(2),
+            })
+        })
+
+        totalOrderPrice = totalOrderPrice.toFixed(2)
+
+        return { lineItems: orderData, totalOrderPrice}
+    }
+
+    displayOrder() {
+        const orderData = this.generateOrder()
+        
+        let orderBuilder = 'Order Details\n'
+        
+
+        orderData.lineItems.forEach((element) => {
+            orderBuilder += `\n ${element.name} x${element.quantity} : £${element.price}`
+        })
+
+        orderBuilder += `\n TOTAL: £${orderData.totalOrderPrice}`
+
+        console.log(orderBuilder)
+
+        return orderBuilder
+    }
 }
 
 class Product {
