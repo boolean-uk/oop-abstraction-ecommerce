@@ -43,5 +43,22 @@ describe('Basket', () => {
         basket.addProduct(yoghurt)
 
         expect(basket.total).toBe(3.75)
-    })    
+
+        basket.addProduct(eggs)
+
+        expect(basket.total).toBe(6.05)
+
+    })
+    
+    it('should be able to add multiple of a product', () => {
+        basket.addProduct(eggs)
+
+        expect(basket.products.length).toBe(1)
+        expect(basket.products[0].quantity).toBe(1)
+
+        basket.addProduct(eggs)
+
+        expect(basket.products.length).toBe(1)
+        expect(basket.products[0].quantity).toBe(2)
+    })  
 })

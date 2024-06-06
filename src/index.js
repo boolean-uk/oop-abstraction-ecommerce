@@ -5,7 +5,17 @@ class Basket {
     }
 
     addProduct(product) {
-        this.products.push(product)
+        const foundProduct = this.products.find((item) => item === product)
+
+        if(!foundProduct) {
+            product.quantity = 1
+            this.products.push(product)
+        }
+
+        if(foundProduct) {
+            product.quantity++
+        }
+
         this.total += product.price
     }
 }
