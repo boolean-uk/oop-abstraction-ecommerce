@@ -9,7 +9,7 @@ describe("eComm Site", () => {
     testBasket = new Basket();
     testProduct = new Product(
       "Gizmo",
-      "2.99",
+      2.99,
       "The gizmo that all kids want this summer",
       5
     );
@@ -57,16 +57,27 @@ describe("eComm Site", () => {
   });
 
   it("should return number of products added", () => {
-
     testBasket.addProduct(testProduct);
     testBasket.addProduct(testProduct);
     testBasket.addProduct(testProduct);
 
-    expect(testBasket.productsAdded).toEqual(3)
-  })
+    expect(testBasket.productsAdded).toEqual(3);
+  });
 
   it("should generate an order for all items in a basket", () => {
+    const testProduct2 = new Product(
+      "Doodah",
+      4.99,
+      "A thingamajigg for your stuff",
+      12
+    );
 
-  })
+    testBasket.addProduct(testProduct);
+    testBasket.addProduct(testProduct);
+    testBasket.addProduct(testProduct2);
+    testBasket.addProduct(testProduct2);
 
+    expect(testBasket.getOrder()[1].productName).toEqual('Doodah')
+    expect(testBasket.getOrder()[0].subTotal).toEqual(5.98)
+  });
 });
