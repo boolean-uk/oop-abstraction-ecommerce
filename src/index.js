@@ -61,21 +61,4 @@ class Basket {
 	}
 }
 
-// const np = new Product("a product", 12, "a fantastic product")
-// const np = new Product()
-// np.name = "a product"
-// np.price = 12
-// np.description = "a fantastic product"
-// console.log(np.product)
-// console.log(typeof np)
-
-// const nb = new Basket()
-// nb.addProduct("3", 3, "3")
-// nb.addProduct("5", 5, "5")
-// nb.showProduct('5')
-// // console.log(nb.products)
-// // nb.removeProduct('3')
-// console.log(nb.showProduct("5"))
-
-// export { Product }
 export default Basket

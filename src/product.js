@@ -19,7 +19,7 @@ class Product {
 	}
 
 	getProduct() {
-		return `${this.name} Cost: €${this.price} Description: ${this.description}`
+		return `Name: ${this.name}\n Cost: €${this.price}\n Description: ${this.description}`
 	}
 }
 
