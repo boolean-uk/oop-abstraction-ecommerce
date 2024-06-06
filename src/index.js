@@ -8,12 +8,12 @@ export default class Basket {
   }
 
   add(id) {
-    this.#basket.push(store.findProduct(id));
+    this.#basket.push(store.findProduct(store.products, id));
   }
 
   remove(id) {
     this.#basket = this.#basket.filter(
-      (product) => product.id !== this.findProduct(id).id
+      (product) => product.id !== store.findProduct(this.#basket, id).id
     );
   }
 
@@ -23,13 +23,5 @@ export default class Basket {
 
   getDetails(id) {
     return store.getDetails(id);
-  }
-
-  findProduct(id) {
-    const product = this.#basket.find((product) => product.id === Number(id));
-
-    if (!product) throw new Error(`The product with ID ${id} is not found!`);
-
-    return product;
   }
 }

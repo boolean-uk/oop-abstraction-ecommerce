@@ -16,7 +16,7 @@ export default class Store {
 
   removeProduct(id) {
     this.#products = this.#products.filter(
-      (product) => product.id !== this.findProduct(id).id
+      (product) => product.id !== this.findProduct(this.#products, id).id
     );
   }
 
@@ -25,15 +25,15 @@ export default class Store {
   }
 
   setPrice(id, price) {
-    this.findProduct(id).setPrice(price);
+    this.findProduct(this.#products, id).setPrice(price);
   }
 
   getDetails(id) {
-    return this.findProduct(id).getDetails();
+    return this.findProduct(this.#products, id).getDetails();
   }
 
-  findProduct(id) {
-    const product = this.#products.find((product) => product.id === Number(id));
+  findProduct(array, id) {
+    const product = array.find((product) => product.id === Number(id));
 
     if (!product) throw new Error(`The product with ID ${id} is not found!`);
 
