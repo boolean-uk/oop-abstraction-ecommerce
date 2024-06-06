@@ -47,7 +47,6 @@ describe('Basket', () => {
         basket.addProduct(eggs)
 
         expect(basket.total).toBe(6.05)
-
     })
     
     it('should be able to add multiple of a product', () => {

@@ -7,19 +7,15 @@ class Basket {
     addProduct(product) {
         const foundProduct = this.findProduct(product)
 
-        if(product.productQuantity === 0) {
+        if(product.isInStock()) {
             throw 'there are no more items left of this product'
         }
 
         if(!foundProduct) {
-            product.quantity = 1
             this.products.push(product)
         }
 
-        if(foundProduct) {
-            product.quantity++
-        }
-
+        product.quantity++
         this.total += product.price
         product.productQuantity--
     }
@@ -32,11 +28,11 @@ class Basket {
         const foundProduct = this.findProduct(product)
         const foundIndex = this.products.indexOf(foundProduct)
 
-        if (foundProduct.quantity === 1) {
+        if (product.productIsLastInBasket()) {
             this.products.splice(foundIndex, 1)
         }
 
-        if (foundProduct.quantity > 1) {
+        if (!product.productIsLastInBasket()) {
             foundProduct.quantity--
         }
 
@@ -74,11 +70,20 @@ class Product {
         this.name = name
         this.price = price
         this.description = description
+        this.quantity = 0
         this.productQuantity = productQuantity
     }
 
     details() {
         return `this product is: ${this.name}, it's price is: $${this.price.toFixed(2)} and extra information is: ${this.description}`
+    }
+
+    isInStock() {
+        return this.productQuantity === 0
+    }
+
+    productIsLastInBasket() {
+        return this.quantity === 1
     }
 }
 
