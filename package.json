@@ -1,6 +1,7 @@
 {
   "name": "oop-abstraction-ecommerce",
   "version": "1.0.0",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "npx jasmine"
