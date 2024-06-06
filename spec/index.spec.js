@@ -95,21 +95,42 @@ describe('Basket', () => {
       2
     )
 
-    let expected = 'Product: Travis Scott Air Force 1\n'
-    expected += 'Quantity: 1\n'
-    expected += 'Sub-total: £2.748\n'
-    expected += '\nProduct: Louis Vuitton Christopher GM backpack\n'
-    expected += 'Quantity: 2\n'
-    expected += 'Sub-total: £11.956\n'
-    expected += '\n--------------\n'
-    expected += '\nTotal: £14.704\n'
-    expected += '\n--------------\n'
-    expected += '\nThank you :)'
+    let expected = 'ORDER\n'
+    expected += '\n1 X Travis Scott Air Force 1 | £2.748\n'
+    expected += '\n2 X Louis Vuitton Christopher GM backpack | £11.956\n'
+    expected += '\n--------------------\n'
+    expected += '\nTOTAL AMOUNT £14.704\n'
+    expected += '\n--------------------'
+
+    expect(basket.getOrder()).toBe(expected)
+  })
+
+  it('should generate the receipt based in the order', () => {
+    basket.addProduct('Travis Scott Air Force 1', 2.748, 'Leather 100%', 1)
+    basket.addProduct(
+      'Louis Vuitton Christopher GM backpack',
+      5.978,
+      'PVC 100%',
+      2
+    )
+
+    let expected = 'RECEIPT\n'
+    expected += `\nFARFETCH\n`
+    expected += `\n(646) 791-3768\n`
+    expected += `\nGB 204 0769 35\n`
+    expected += '\n1 X Travis Scott Air Force 1 | £2.748\n'
+    expected += '\n2 X Louis Vuitton Christopher GM backpack | £11.956\n'
+    expected += '\n--------------------\n'
+    expected += '\nTOTAL AMOUNT £14.704\n'
+    expected += '\n--------------------\n'
+    expected += '\nTHANK YOU!'
 
     expect(basket.getReceipt()).toBe(expected)
   })
 
-  it('should throw an error if the basket is empty and try to generate an receipt', () => {
-    expect(() => basket.getReceipt()).toThrowError('The basket is empty, can not generate receipt')
+  it('should throw an error if trying to generate an order or the receipt with an empty basket', () => {
+    expect(() => basket.getOrder()).toThrowError('The basket is empty, can not generate an order')
+
+    expect(() => basket.getReceipt()).toThrowError('The basket is empty, can not generate the receipt')
   })
 })

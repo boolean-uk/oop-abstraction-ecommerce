@@ -88,23 +88,43 @@ class Basket {
     return this.#totalPrice
   }
 
-  getReceipt() {
-    let receipt = ''
-  
+  getOrder() {
     if (this.quantity === 0) {
-      throw new Error('The basket is empty, can not generate receipt')
+      throw new Error('The basket is empty, can not generate an order')
     }
-  
+
+    let order = 'ORDER\n'
+    
     this.productList.forEach((product) => {
-      receipt += `Product: ${product.name}\n`
-      receipt += `Quantity: ${product.quantity}\n`
-      receipt += `Sub-total: £${(product.quantity * product.price).toFixed(3)}\n\n`
+      order += `\n${product.quantity} X ${product.name} | £${(product.quantity * product.price).toFixed(3)}\n`
     })
   
-    receipt += '--------------\n'
-    receipt += `\nTotal: £${this.totalPrice.toFixed(3)}\n`
-    receipt += '\n--------------\n'
-    receipt += '\nThank you :)'
+    order += '\n--------------------\n'
+    order += `\nTOTAL AMOUNT £${this.totalPrice.toFixed(3)}\n`
+    order += '\n--------------------'
+    return order
+  }
+
+  getReceipt () {
+    if (this.quantity === 0) {
+      throw new Error('The basket is empty, can not generate the receipt')
+    }
+
+    const company = new Company()
+    let receipt = 'RECEIPT\n'
+
+    receipt += `\n${company.businessName}\n`
+    receipt += `\n${company.phoneNumber}\n`
+    receipt += `\n${company.vatNumber}\n`
+
+    this.productList.forEach((product) => {
+      receipt += `\n${product.quantity} X ${product.name} | £${(product.quantity * product.price).toFixed(3)}\n`
+    })
+
+    receipt += '\n--------------------\n'
+    receipt += `\nTOTAL AMOUNT £${this.totalPrice.toFixed(3)}\n`
+    receipt += '\n--------------------\n'
+    receipt += '\nTHANK YOU!'
     return receipt
   }
 }
@@ -137,6 +157,30 @@ class Product {
   get quantity() {
     return this.#quantity
   }
+}
+
+class Company {
+    #phoneNumber
+    #businessName
+    #vatNumber
+
+    constructor() {
+        this.#phoneNumber = '(646) 791-3768'
+        this.#businessName = 'FARFETCH'
+        this.#vatNumber = 'GB 204 0769 35'
+    }
+
+    get phoneNumber() {
+        return this.#phoneNumber
+    }
+
+    get businessName() {
+        return this.#businessName
+    }
+
+    get vatNumber() {
+        return this.#vatNumber
+    }
 }
 
 export default Basket
