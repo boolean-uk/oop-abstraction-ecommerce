@@ -43,6 +43,22 @@ class Basket {
 
         return foundProduct
     }
+
+    order() {
+        function getItem(item) {
+            return `${item.name}    ${item.quantity}    $${(item.price * item.quantity).toFixed(2)} \n`
+        }
+
+        let allItems = this.products.map((product) => getItem(product))
+        allItems = allItems.join('')
+
+        console.log(
+            `-------- \n ${allItems} \n total: $${this.total.toFixed(2)} \n --------
+            `
+        )
+
+        return `-------- \n ${allItems} \n total: $${this.total.toFixed(2)} \n --------`
+    }
 }
 
 class Product {

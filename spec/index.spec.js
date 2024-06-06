@@ -93,4 +93,16 @@ describe('Basket', () => {
         expect(result2).toBe(`this product is: yoghurt, it's price is: $1.45 and extra information is: grassfed freerange cow milk`)
     }) 
 
+    it('should be able to place an order', () => {
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+        basket.addProduct(yoghurt)
+        basket.addProduct(yoghurt)
+
+        basket.order()
+
+        expect(Number(basket.total.toFixed(2))).toBe(9.80)
+    }) 
+
 })
