@@ -4,6 +4,7 @@ class Product {
     this.price = price;
     this.description = description;
     this.stock = stock;
+    this.quantityInBasket = 0
   }
 
   reduceStock(quantity) {
@@ -12,6 +13,10 @@ class Product {
 
   hasStock() {
     return this.stock > 0;
+  }
+
+  increaseQuantityInBasket(quantity) {
+    this.quantityInBasket+=quantity
   }
 }
 

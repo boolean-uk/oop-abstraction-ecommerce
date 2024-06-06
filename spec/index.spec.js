@@ -64,4 +64,9 @@ describe("eComm Site", () => {
 
     expect(testBasket.productsAdded).toEqual(3)
   })
+
+  it("should generate an order for all items in a basket", () => {
+
+  })
+
 });

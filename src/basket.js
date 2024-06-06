@@ -11,9 +11,19 @@ class Basket {
     if (!product.hasStock()) {
       throw new Error("No stock");
     }
-    this.#contents.push(product);
+
+    if (this.alreadyInBasket(product)) {
+        product.increaseQuantityInBasket(1)
+    } else {
+        this.#contents.push(product);
+    }
+
     product.reduceStock(1);
     this.#productsAdded++;
+  }
+
+  alreadyInBasket(product) {
+    return this.#contents.includes(product)
   }
 
   removeProduct(productName) {
