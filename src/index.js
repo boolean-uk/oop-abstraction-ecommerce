@@ -16,6 +16,7 @@ class Product {
     get price() {
         return this.#price
     }
+
 }
 
 class Basket {
@@ -29,13 +30,16 @@ class Basket {
         this.#products.push(product)
     }
 
+    removeProduct(productName) {
+        this.#products = this.#products.filter(product => product.name !== productName)
+    }
+
     get products() {
         return this.#products
     }
 
     getTotalBasketPrice() {
         return this.#products.reduce((total, product) => total + product.price, 0)
-
     }
 }
 
