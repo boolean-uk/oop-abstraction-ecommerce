@@ -47,4 +47,18 @@ describe('basket', () => {
         expect(basket.displayContents().length).toBe(1)
         expect(() => {basket.displayContents()[1].name}).toThrow()
     })
+
+    it('displays the details of the product in a well formatted string', () => {
+        const product = {
+            name: "Apple",
+            description: "Fruit",
+            price:0.65
+        }
+
+        basket.addProduct(product)
+
+        expect(basket.displayContents()[0].displayDetails()).toBe(`Name: ${product.name}
+        Description: ${product.description}
+        Price: ${product.price.toFixed(2)}`)
+    })
 })

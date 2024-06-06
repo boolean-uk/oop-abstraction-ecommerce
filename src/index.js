@@ -7,7 +7,7 @@ class Basket {
 
     addProduct(product) {
         const newProduct = new Product(product)
-        
+
         this.#contents.push(newProduct)
         return this.displayContents()
     }
@@ -30,8 +30,7 @@ class Product {
     #description
 
     constructor(product) {
-
-        const {name, price, description} = product
+        const { name, price, description } = product
         this.#name = name
         this.#description = description
         this.#price = price
@@ -47,6 +46,12 @@ class Product {
 
     get price() {
         return this.#price
+    }
+
+    displayDetails() {
+        return `Name: ${this.#name}
+        Description: ${this.#description}
+        Price: ${this.#price.toFixed(2)}`
     }
 }
 
