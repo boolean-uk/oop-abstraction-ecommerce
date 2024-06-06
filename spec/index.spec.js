@@ -80,4 +80,9 @@ describe("eComm Site", () => {
     expect(testBasket.getOrder()[1].productName).toEqual('Doodah')
     expect(testBasket.getOrder()[0].subTotal).toEqual(5.98)
   });
+
+  it("should have products that generate product summaries", () => {
+
+    expect(testProduct.getInfo()).toEqual("Gizmo - The gizmo that all kids want this summer - £2.99")
+  });
 });
