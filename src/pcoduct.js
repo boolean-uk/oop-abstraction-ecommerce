@@ -4,10 +4,19 @@ class Product {
   #pDescription
   constructor(pName, pPrice, pDescription){
     this.#pName = pName,
-    this.#pPrice = pPrice,
+    this.checkPrice(pPrice),
     this.#pDescription = pDescription
   }
 
+  checkPrice(price){
+    if(typeof price === 'number') {
+      this.#pPrice = price
+    } else {
+      console.log('The Price is not a number')
+      return 0
+    }
+  }
+  
   details(){
     return `
     Product Name is : ${this.#pName}, Price is : ${this.#pPrice} .
@@ -17,7 +26,7 @@ class Product {
   get product(){
     return {
       pName : this.#pName,
-      pPrice : this.pPrice,
+      pPrice : this.#pPrice,
       pDescription : this.#pDescription
     }
   }
