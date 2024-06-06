@@ -43,9 +43,16 @@ describe("eComm Site", () => {
   });
 
   it("should remove items from the basket by name", () => {
-    testBasket.addProduct(testProduct)
-    const removedProduct = testBasket.removeProduct("Gizmo")
+    testBasket.addProduct(testProduct);
+    const removedProduct = testBasket.removeProduct("Gizmo");
 
-    expect(removedProduct).toEqual(testProduct)
+    expect(removedProduct).toEqual(testProduct);
+  });
+
+  it("should throw an error when attempting to remove product that doesn't exist", () => {
+    testBasket.addProduct(testProduct);
+    expect(() => {
+      testBasket.removeProduct("Cheese");
+    }).toThrowError("That product is not in the basket");
   });
 });
