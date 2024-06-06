@@ -25,8 +25,18 @@ describe("eComm Site", () => {
   });
 
   it("should allow products to be added to the basket", () => {
-    testBasket.addProduct(testProduct)
+    testBasket.addProduct(testProduct);
 
-    expect(testBasket.contents[0]).toEqual(testProduct)
-  })
+    expect(testBasket.contents[0]).toEqual(testProduct);
+  });
+
+  it("should prevent items being added to basket when available stock is 0", () => {
+    testBasket.addProduct(testProduct);
+    testBasket.addProduct(testProduct);
+    testBasket.addProduct(testProduct);
+    testBasket.addProduct(testProduct);
+    testBasket.addProduct(testProduct);
+
+    expect(() => {testBasket.addProduct(testProduct)}).toThrowError("No stock");
+  });
 });

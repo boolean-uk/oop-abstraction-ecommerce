@@ -1,17 +1,21 @@
 class Basket {
-    #contents
+  #contents;
 
-    constructor() {
-        this.#contents = []
-    }
+  constructor() {
+    this.#contents = [];
+  }
 
-    addProduct(product) {
-        this.#contents.push(product)
+  addProduct(product) {
+    if (!product.hasStock()) {
+      throw new Error("No stock");
     }
+    this.#contents.push(product);
+    product.reduceStockByOne();
+  }
 
-    get contents() {
-        return [...this.#contents]
-    }
+  get contents() {
+    return [...this.#contents];
+  }
 }
 
-export default Basket
+export default Basket;
