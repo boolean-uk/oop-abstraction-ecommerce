@@ -10,7 +10,21 @@ class Basket {
       throw new Error("No stock");
     }
     this.#contents.push(product);
-    product.reduceStockByOne();
+    product.reduceStock(1);
+  }
+
+  removeProduct(productName) {
+    const productToRemove = this.#contents.find(
+      (product) => product.name === productName
+    );
+
+    if (!productToRemove) {
+      throw new Error("That product is not in the basket");
+    }
+
+    const index = this.#contents.indexOf(productToRemove);
+    this.#contents.splice(index, 1);
+    return productToRemove;
   }
 
   get contents() {

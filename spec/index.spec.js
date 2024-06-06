@@ -37,6 +37,15 @@ describe("eComm Site", () => {
     testBasket.addProduct(testProduct);
     testBasket.addProduct(testProduct);
 
-    expect(() => {testBasket.addProduct(testProduct)}).toThrowError("No stock");
+    expect(() => {
+      testBasket.addProduct(testProduct);
+    }).toThrowError("No stock");
+  });
+
+  it("should remove items from the basket by name", () => {
+    testBasket.addProduct(testProduct)
+    const removedProduct = testBasket.removeProduct("Gizmo")
+
+    expect(removedProduct).toEqual(testProduct)
   });
 });

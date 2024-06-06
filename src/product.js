@@ -6,8 +6,8 @@ class Product {
     this.stock = stock;
   }
 
-  reduceStockByOne() {
-    this.stock--;
+  reduceStock(quantity) {
+    this.stock -= quantity;
   }
 
   hasStock() {
