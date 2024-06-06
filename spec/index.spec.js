@@ -55,4 +55,13 @@ describe("eComm Site", () => {
       testBasket.removeProduct("Cheese");
     }).toThrowError("That product is not in the basket");
   });
+
+  it("should return number of products added", () => {
+
+    testBasket.addProduct(testProduct);
+    testBasket.addProduct(testProduct);
+    testBasket.addProduct(testProduct);
+
+    expect(testBasket.productsAdded).toEqual(3)
+  })
 });

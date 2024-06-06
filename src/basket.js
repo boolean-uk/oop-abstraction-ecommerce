@@ -1,8 +1,10 @@
 class Basket {
   #contents;
+  #productsAdded;
 
   constructor() {
     this.#contents = [];
+    this.#productsAdded = 0;
   }
 
   addProduct(product) {
@@ -11,6 +13,7 @@ class Basket {
     }
     this.#contents.push(product);
     product.reduceStock(1);
+    this.#productsAdded++;
   }
 
   removeProduct(productName) {
@@ -25,6 +28,10 @@ class Basket {
     const index = this.#contents.indexOf(productToRemove);
     this.#contents.splice(index, 1);
     return productToRemove;
+  }
+
+  get productsAdded() {
+    return this.#productsAdded;
   }
 
   get contents() {
