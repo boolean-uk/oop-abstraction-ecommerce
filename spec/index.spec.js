@@ -32,4 +32,16 @@ describe('Basket', () => {
         expect(basket.products[1].price).toBe(1.45)
         expect(basket.products[1].description).toBe('grassfed freerange cow milk')
     })
+
+    it('should update the price when products are added', () => {
+        expect(basket.total). toBe(0)
+
+        basket.addProduct(eggs)
+
+        expect(basket.total).toBe(2.30)
+
+        basket.addProduct(yoghurt)
+
+        expect(basket.total).toBe(3.75)
+    })    
 })
