@@ -25,8 +25,8 @@ class Basket {
     throw new Error('Product properties must be filled in correctly')
   }
 
-  isProductFound(productToRemove) {
-    return productToRemove !== -1
+  isProductFound(name) {
+    return name !== -1
   }
 
   removeProduct(name) {
@@ -48,6 +48,19 @@ class Basket {
       price: product.price,
       description: product.description,
     }))
+  }
+
+  outputProductDetails(name) {
+    const productToOutput = this.#productList.findIndex(
+        (product) => product.name === name
+    )
+
+    if (this.isProductFound(productToOutput)) {
+        this.#productList.slice(productToOutput, 1)
+        return this.listProducts()
+    }
+
+    throw new Error('Product not found')
   }
 }
 
