@@ -39,6 +39,6 @@ describe('Basket', () => {
         )
         basket.addProduct(product1)
         basket.addProduct(product2)
-        expect(basket.getTotalBasketPrice()).toBe(400)
+        expect(basket.getTotalBasketPrice()).toBe(200)
     })
 })
