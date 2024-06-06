@@ -20,7 +20,6 @@ class Product {
     get name() {
         return this.#name
     }
-
 }
 
 class Basket {
