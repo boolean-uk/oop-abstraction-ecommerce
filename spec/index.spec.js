@@ -12,4 +12,20 @@ describe('basket', () => {
     expect(basket).toBeInstanceOf(Basket)
   })
 
+  it('should add procduct to basket', () => {
+    const myProduct = new Product('bagel', 1, 'classic bagel')
+    basket.add(myProduct.product)
+
+    expect(basket.viewBasket().length).toBe(1)
+  })
+
+  it('should remove product from basket', () => {
+    const myProduct = new Product('bagel', 1, 'classic bagel')
+    basket.add(myProduct.product)
+
+    expect(basket.viewBasket().length).toBe(1)
+    basket.remove(myProduct.product)
+
+    expect(basket.viewBasket().length).toBe(0)
+  })
 })
