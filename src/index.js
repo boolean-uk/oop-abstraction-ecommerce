@@ -13,3 +13,4 @@ class Product {
 }
 
 export default Basket
+export { Product }
