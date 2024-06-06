@@ -52,12 +52,14 @@ class Basket {
         let allItems = this.products.map((product) => getItem(product))
         allItems = allItems.join('')
 
-        console.log(
-            `-------- \n ${allItems} \n total: $${this.total.toFixed(2)} \n --------
-            `
-        )
-
         return `-------- \n ${allItems} \n total: $${this.total.toFixed(2)} \n --------`
+    }
+
+    receipt() {
+        const order = this.order()
+        const receipt = `Bob's grocery store \n ${order} \n +31207714089 \n VAT: NL123456789B01`
+
+        return receipt
     }
 }
 

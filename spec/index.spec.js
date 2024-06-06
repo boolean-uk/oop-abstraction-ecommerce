@@ -100,9 +100,22 @@ describe('Basket', () => {
         basket.addProduct(yoghurt)
         basket.addProduct(yoghurt)
 
-        basket.order()
+        const result = basket.order()
 
         expect(Number(basket.total.toFixed(2))).toBe(9.80)
+        expect(result).toBeDefined()
     }) 
 
+    it('should be generate a receipt', () => {
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+        basket.addProduct(yoghurt)
+        basket.addProduct(yoghurt)
+
+        const result = basket.receipt()
+
+        expect(Number(basket.total.toFixed(2))).toBe(9.80)
+        expect(result).toBeDefined()
+    })
 })
