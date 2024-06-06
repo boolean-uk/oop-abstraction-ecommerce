@@ -14,8 +14,12 @@ class Basket {
         return 0
       }
     
-    const index = this.#basket.findIndex((item) => item.pName === product.pName )
-    if(index) {
+    const index = this.#basket.findIndex((item) => {
+      console.log('Item is : ', item.pName ,' && product is ', product.pName)
+      return item.pName === product.pName
+    })
+    console.log('index : ', index)
+    if(index !== -1) {
       this.#basket.splice(index, 1)
     } else {
       console.log('Product not found!')
@@ -24,6 +28,7 @@ class Basket {
   }
 
   viewBasket(){
+    // console.log('test')
     return this.#basket
   }
 }

@@ -2,12 +2,13 @@ class Product {
   #pName
   #pPrice
   #pDescription
+
   constructor(pName, pPrice, pDescription){
     this.#pName = pName,
     this.checkPrice(pPrice),
     this.#pDescription = pDescription
   }
-
+  
   checkPrice(price){
     if(typeof price === 'number') {
       this.#pPrice = price
@@ -16,7 +17,7 @@ class Product {
       return 0
     }
   }
-  
+
   details(){
     return `
     Product Name is : ${this.#pName}, Price is : ${this.#pPrice} .
