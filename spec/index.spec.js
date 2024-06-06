@@ -61,4 +61,22 @@ describe('Basket', () => {
         expect(basket.products.length).toBe(1)
         expect(basket.products[0].quantity).toBe(2)
     })  
+
+    it('should be able to remove a product', () => {
+        basket.addProduct(eggs)
+        basket.addProduct(yoghurt)
+
+        const removed = basket.removeProduct(yoghurt)
+
+        expect(removed).toBe(yoghurt)
+        expect(basket.products.length).toBe(1)
+
+        basket.addProduct(yoghurt)
+        basket.addProduct(eggs)
+
+        const removed2 = basket.removeProduct(eggs)
+        expect(removed2).toBe(eggs)
+        expect(basket.products.length).toBe(2)
+        expect(basket.products[0].quantity).toBe(1)
+    }) 
 })
