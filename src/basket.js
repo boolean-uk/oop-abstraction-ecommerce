@@ -41,6 +41,19 @@ class Basket {
     return thisOrder.generateOrder([...this.#contents])
   }
 
+  getReceipt() {
+    let receipt = ''
+    const orderSummary = this.getOrder()
+    orderSummary.forEach((line) => {
+        if (orderSummary.indexOf(line) === orderSummary.length - 1) {
+            receipt += `Total: ${line}\n Telephone: 01818118181 \n Will's Gubbins Shop \n VAT No.: 2534694645`
+        } else {
+        receipt += `${line.productName} ${line.quantity} ${line.subTotal}\n`
+        }
+    })
+    return receipt
+  }
+
   get productsAdded() {
     return this.#productsAdded;
   }
@@ -49,6 +62,8 @@ class Basket {
     return [...this.#contents];
   }
 }
+
+
 
 
 export default Basket;
