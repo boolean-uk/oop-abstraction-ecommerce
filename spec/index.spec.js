@@ -79,4 +79,18 @@ describe('Basket', () => {
         expect(basket.products.length).toBe(2)
         expect(basket.products[0].quantity).toBe(1)
     }) 
+
+    it('should be able to get product details', () => {
+        basket.addProduct(eggs)
+        basket.addProduct(yoghurt)
+
+        const result = basket.products[0].details()
+
+        expect(result).toBe(`this product is: eggs, it's price is: $2.30 and extra information is: grassfed freerange chicken eggs`)
+
+        const result2 = yoghurt.details()
+
+        expect(result2).toBe(`this product is: yoghurt, it's price is: $1.45 and extra information is: grassfed freerange cow milk`)
+    }) 
+
 })

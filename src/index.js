@@ -27,10 +27,16 @@ class Basket {
         const foundProduct = this.findProduct(product)
         const foundIndex = this.products.indexOf(foundProduct)
 
-        if (foundIndex >= 0 && foundProduct.quantity === 1) {
+        if (foundProduct.quantity === 1) {
             this.products.splice(foundIndex, 1)
-        } else if (foundIndex >= 0 && foundProduct.quantity > 1) {
+        }
+
+        if (foundProduct.quantity > 1) {
             foundProduct.quantity--
+        }
+
+        if (!foundProduct) {
+            throw 'product not found in basket'
         }
 
         this.total -= foundProduct.price
@@ -44,6 +50,10 @@ class Product {
         this.name = name
         this.price = price
         this.description = description
+    }
+
+    details() {
+        return `this product is: ${this.name}, it's price is: $${this.price.toFixed(2)} and extra information is: ${this.description}`
     }
 }
 
