@@ -7,6 +7,10 @@ class Basket {
     addProduct(product) {
         const foundProduct = this.findProduct(product)
 
+        if(product.productQuantity === 0) {
+            throw 'there are no more items left of this product'
+        }
+
         if(!foundProduct) {
             product.quantity = 1
             this.products.push(product)

@@ -135,4 +135,16 @@ describe('Basket', () => {
 
         expect(basket.products[0].productQuantity).toBe(4)
     })
+
+    it('should not be possible to add more products to the basket than are in the store', () => {
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+        basket.addProduct(eggs)
+
+        expect(() => basket.addProduct(eggs)).toThrow('there are no more items left of this product')
+        expect(basket.products[0].quantity).toBe(6)
+    })
 })
