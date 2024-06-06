@@ -12,6 +12,10 @@ class Product {
     getProductDetails() {
         return `${this.#name}: $${this.#price} - ${this.#description}`
     }
+
+    get price() {
+        return this.#price
+    }
 }
 
 class Basket {
@@ -27,6 +31,11 @@ class Basket {
 
     get products() {
         return this.#products
+    }
+
+    getTotalBasketPrice() {
+        return this.#products.reduce((total, product) => total + product.price, 0)
+
     }
 }
 
