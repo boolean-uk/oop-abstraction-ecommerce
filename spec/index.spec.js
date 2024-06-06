@@ -15,8 +15,8 @@ describe('Basket', () => {
         name: 'Travis Scott Air Force 1',
         price: 2.748,
         description: 'Leather 100%',
-        quantity: 1
-      }
+        quantity: 1,
+      },
     ])
   })
 
@@ -36,8 +36,8 @@ describe('Basket', () => {
         name: 'Louis Vuitton Christopher GM backpack',
         price: 5.978,
         description: 'PVC 100%',
-        quantity: 1
-      }
+        quantity: 1,
+      },
     ])
   })
 
@@ -69,8 +69,8 @@ describe('Basket', () => {
         name: 'Travis Scott Air Force 1',
         price: 2.748,
         description: 'Leather 100%',
-        quantity: 1
-      }
+        quantity: 1,
+      },
     ])
   })
 
@@ -84,5 +84,32 @@ describe('Basket', () => {
     )
 
     expect(basket.quantity).toBe(3)
+  })
+
+  it('should be able to generate an order', () => {
+    basket.addProduct('Travis Scott Air Force 1', 2.748, 'Leather 100%', 1)
+    basket.addProduct(
+      'Louis Vuitton Christopher GM backpack',
+      5.978,
+      'PVC 100%',
+      2
+    )
+
+    let expected = 'Product: Travis Scott Air Force 1\n'
+    expected += 'Quantity: 1\n'
+    expected += 'Sub-total: £2.748\n'
+    expected += '\nProduct: Louis Vuitton Christopher GM backpack\n'
+    expected += 'Quantity: 2\n'
+    expected += 'Sub-total: £11.956\n'
+    expected += '\n--------------\n'
+    expected += '\nTotal: £14.704\n'
+    expected += '\n--------------\n'
+    expected += '\nThank you :)'
+
+    expect(basket.getReceipt()).toBe(expected)
+  })
+
+  it('should throw an error if the basket is empty and try to generate an receipt', () => {
+    expect(() => basket.getReceipt()).toThrowError('The basket is empty, can not generate receipt')
   })
 })

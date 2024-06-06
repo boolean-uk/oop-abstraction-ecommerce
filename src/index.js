@@ -1,10 +1,12 @@
 class Basket {
   #productList
   #quantity
+  #totalPrice
 
   constructor() {
     this.#productList = []
     this.#quantity = 0
+    this.#totalPrice = 0
   }
 
   get productList() {
@@ -12,12 +14,12 @@ class Basket {
       name: product.name,
       price: product.price,
       description: product.description,
-      quantity: product.quantity
+      quantity: product.quantity,
     }))
   }
 
   get quantity() {
-    this.#productList.forEach((product) => {
+    this.productList.forEach((product) => {
       this.#quantity += product.quantity
     })
 
@@ -35,7 +37,11 @@ class Basket {
   }
 
   addProduct(name, price, description, quantity) {
-    if (this.isString(name, description) && this.isNumber(price) && this.isNumber(quantity)) {
+    if (
+      this.isString(name, description) &&
+      this.isNumber(price) &&
+      this.isNumber(quantity)
+    ) {
       const newProduct = new Product(name, price, description, quantity)
       this.#productList.push(newProduct)
       return this.productList
@@ -72,6 +78,34 @@ class Basket {
     }
 
     throw new Error('Product not found')
+  }
+
+  get totalPrice() {
+    this.productList.forEach((product) => {
+      this.#totalPrice += product.quantity * product.price
+    })
+
+    return this.#totalPrice
+  }
+
+  getReceipt() {
+    let receipt = ''
+  
+    if (this.quantity === 0) {
+      throw new Error('The basket is empty, can not generate receipt')
+    }
+  
+    this.productList.forEach((product) => {
+      receipt += `Product: ${product.name}\n`
+      receipt += `Quantity: ${product.quantity}\n`
+      receipt += `Sub-total: £${(product.quantity * product.price).toFixed(3)}\n\n`
+    })
+  
+    receipt += '--------------\n'
+    receipt += `\nTotal: £${this.totalPrice.toFixed(3)}\n`
+    receipt += '\n--------------\n'
+    receipt += '\nThank you :)'
+    return receipt
   }
 }
 
