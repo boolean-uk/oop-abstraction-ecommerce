@@ -1,6 +1,6 @@
 class Order {
     constructor() {
-        this.order = []
+        this.orderSummary = []
         this.orderTotal = 0
     }
 
@@ -8,11 +8,11 @@ class Order {
         basketContents.forEach((item) => {
             let line = new OrderLine(item.name, item.quantityInBasket, item.subTotal)
             this.orderTotal += item.subTotal
-            this.order.push(line)
+            this.orderSummary.push(line)
         })
 
-        this.order.push(this.orderTotal)
-        return this.order
+        this.orderSummary.push(this.orderTotal)
+        return this.orderSummary
     }
 }
 
