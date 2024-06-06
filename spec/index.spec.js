@@ -1,6 +1,7 @@
 import Basket from "../src/index.js"
 import ProductList from "../src/productList.js"
 import Product from "../src/product.js"
+import exp from "constants"
 
 describe('Basket', () => {
     let basket
@@ -28,5 +29,11 @@ describe('Basket', () => {
         basket.remove(watch)
         expect(basket.basket.length).toBe(1)
         expect(basket.basket[0].name).toBe('Panasonic ub820')
+    })
+    it('should find a product in the basket', () => {
+        const player = productList.getProduct('Panasonic')
+        basket.add(player)
+        const expected = basket.find(player)
+        expect(expected).toEqual(player)
     })
 })
