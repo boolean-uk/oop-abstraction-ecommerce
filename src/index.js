@@ -11,11 +11,11 @@ class Basket {
   }
 
   remove(product) {
-    const index = this.#basket.indexOf(product);
-    const newBasket = this.#basket.splice(index, 1);
     if (!this.find(product)) {
       throw "Product cannot be removed, product not found";
     }
+    const index = this.#basket.indexOf(product);
+    const newBasket = this.#basket.splice(index, 1);
     return newBasket;
   }
 
@@ -38,4 +38,6 @@ const productList = new ProductList()
 const watch = productList.getProduct('Garmin')
 const basket = new Basket();
 basket.add(watch)
+basket.remove(watch)
+
 

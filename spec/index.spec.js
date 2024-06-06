@@ -20,4 +20,13 @@ describe('Basket', () => {
         expect(basket.basket.length).toBe(1)
         expect(basket.basket[0].name).toBe('Garmin epix Gen 2')
     })
+    it('should remove a product from the basket', () => {
+        const watch = productList.getProduct('Garmin')
+        const player = productList.getProduct('Panasonic')
+        basket.add(watch)
+        basket.add(player)
+        basket.remove(watch)
+        expect(basket.basket.length).toBe(1)
+        expect(basket.basket[0].name).toBe('Panasonic ub820')
+    })
 })
