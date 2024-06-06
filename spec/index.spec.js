@@ -37,3 +37,14 @@ describe('Basket', () => {
         expect(expected).toEqual(player)
     })
 })
+describe('ProductList', () => {
+    let productList
+    beforeEach(() => {
+        productList = new ProductList()
+    })
+    it('should get a product from details from the list', () => {
+        const list = productList.get()
+        expect(list.length).toBe(8)
+        expect(list[1].name).toBe('watermelon')
+    })
+})
