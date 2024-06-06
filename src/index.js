@@ -6,21 +6,48 @@ class Basket {
     }
 
     addProduct(product) {
-        const newProduct = new Product(product)
+        const foundProduct = this.productSearch(product)
+
+        if (foundProduct) {
+            foundProduct.quantity++
+            return this.displayContents()
+        }
+
+        const newProduct = { product: new Product(product), quantity: 1 }
 
         this.#contents.push(newProduct)
         return this.displayContents()
     }
 
     removeProduct(product) {
-        this.#contents = this.#contents.filter((element) => {
-            return element.name !== product.name
-        })
+        const foundProduct = this.productSearch(product)
+
+        if (!foundProduct) {
+            throw Error('Product not found')
+        }
+
+        foundProduct.quantity--
+
+        if (foundProduct.quantity < 1) {
+            this.#contents = this.#contents.filter((element) => {
+                return element.product.name !== product.name
+            })
+        }
+
         return this.displayContents()
     }
 
     displayContents() {
         return [...this.#contents]
+    }
+
+    productSearch(product) {
+        const foundProduct = this.#contents.find((element) => {
+            const isFound = element.product.name === product.name
+            return isFound
+        })
+
+        return foundProduct
     }
 }
 

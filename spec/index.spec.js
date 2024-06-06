@@ -20,8 +20,8 @@ describe('basket', () => {
 
         basket.addProduct(product)
 
-        expect(basket.displayContents()[0]).toBeInstanceOf(Product)
-        expect(basket.displayContents()[0].name).toBe(product.name)
+        expect(basket.displayContents()[0].product).toBeInstanceOf(Product)
+        expect(basket.displayContents()[0].product.name).toBe(product.name)
     })
 
     it('succesfully removes a product from the basket', () => {
@@ -40,12 +40,12 @@ describe('basket', () => {
         basket.addProduct(product)
         basket.addProduct(product2)
 
-        expect(basket.displayContents()[1].name).toBe(product2.name)
+        expect(basket.displayContents()[1].product.name).toBe(product2.name)
 
         basket.removeProduct(product2)
 
         expect(basket.displayContents().length).toBe(1)
-        expect(() => {basket.displayContents()[1].name}).toThrow()
+        expect(() => {basket.displayContents()[1].product.name}).toThrow()
     })
 
     it('displays the details of the product in a well formatted string', () => {
@@ -57,8 +57,37 @@ describe('basket', () => {
 
         basket.addProduct(product)
 
-        expect(basket.displayContents()[0].displayDetails()).toBe(`Name: ${product.name}
+        expect(basket.displayContents()[0].product.displayDetails()).toBe(`Name: ${product.name}
         Description: ${product.description}
         Price: ${product.price.toFixed(2)}`)
+    })
+
+    it('succesfully increments when adding products', () => {
+        const product = {
+            name: "Apple",
+            description: "Fruit",
+            price:0.65
+        }
+
+        basket.addProduct(product)
+        basket.addProduct(product)
+
+        expect(basket.displayContents().length).toBe(1)
+        expect(basket.displayContents()[0].quantity).toBe(2)
+    })
+
+    it('succesfully decrements when removing products', () => {
+        const product = {
+            name: "Apple",
+            description: "Fruit",
+            price:0.65
+        }
+
+        basket.addProduct(product)
+        basket.addProduct(product)
+        basket.removeProduct(product)
+
+        expect(basket.displayContents().length).toBe(1)
+        expect(basket.displayContents()[0].quantity).toBe(1)
     })
 })
