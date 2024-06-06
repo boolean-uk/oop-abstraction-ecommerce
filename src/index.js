@@ -14,4 +14,20 @@ class Product {
     }
 }
 
-export { Product }
+class Basket {
+    #products
+
+    constructor() {
+        this.#products = []
+    }
+
+    addProduct(product) {
+        this.#products.push(product)
+    }
+
+    get products() {
+        return this.#products
+    }
+}
+
+export { Product, Basket }
