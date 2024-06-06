@@ -26,22 +26,25 @@
 import Product from "./product.js"
 
 class Basket {
-	products
+	basket
 	constructor() {
-		this.products = []
+		this.basket = []
 	}
 
-	addProduct(name, price, description) {
-		const newProduct = new Product(name, price, description)
-		this.products.push(newProduct)
+    addProduct(name, price, description) {
+        // const isInBasket = 
+        
+        
+        const newProduct = new Product(name, price, description)
+			this.basket.push(newProduct)
 	}
 
 	removeProduct(name) {
-		const productToRemove = this.products.findIndex(
+		const productToRemove = this.basket.findIndex(
 			(prd) => prd.name === name
 		)
 		if (productToRemove !== -1) {
-			this.products.splice(productToRemove, 1)
+			this.basket.splice(productToRemove, 1)
 		} else {
 			throw new Error(
 				`There is no product named ${name} in the basket`
@@ -50,7 +53,7 @@ class Basket {
 	}
 
 	showProduct(name) {
-		const productToShow = this.products.find(
+		const productToShow = this.basket.find(
 			(prd) => prd.name === name
 		)
 		if (productToShow) {
@@ -62,3 +65,9 @@ class Basket {
 }
 
 export default Basket
+
+const nb = new Basket()
+
+nb.addProduct("Eggs", 3, "A dozen of eggs")
+nb.addProduct("Eggs", 3, "A dozen of eggs")
+console.log(nb.basket)
