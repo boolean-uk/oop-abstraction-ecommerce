@@ -17,6 +17,10 @@ class Product {
         return this.#price
     }
 
+    get name() {
+        return this.#name
+    }
+
 }
 
 class Basket {
