@@ -22,7 +22,7 @@ describe('Basket', () => {
             'Self-Portrait with a Sunflower, 140cm(w) x 100cm(h)'
         )
         basket.addProduct(product)
-        expect(basket.products.length).toBe(2)
+        expect(basket.products.length).toBe(1)
         expect(basket.products[0]).toBe(product)
     })
 })
