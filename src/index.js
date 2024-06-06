@@ -160,27 +160,27 @@ class Product {
 }
 
 class Company {
-    #phoneNumber
-    #businessName
-    #vatNumber
+  #phoneNumber
+  #businessName
+  #vatNumber
 
-    constructor() {
-        this.#phoneNumber = '(646) 791-3768'
-        this.#businessName = 'FARFETCH'
-        this.#vatNumber = 'GB 204 0769 35'
-    }
+  constructor() {
+    this.#phoneNumber = '(646) 791-3768'
+    this.#businessName = 'FARFETCH'
+    this.#vatNumber = 'GB 204 0769 35'
+  }
 
-    get phoneNumber() {
-        return this.#phoneNumber
-    }
+  get phoneNumber() {
+    return this.#phoneNumber
+  }
 
-    get businessName() {
-        return this.#businessName
-    }
+  get businessName() {
+    return this.#businessName
+  }
 
-    get vatNumber() {
-        return this.#vatNumber
-    }
+  get vatNumber() {
+    return this.#vatNumber
+  }
 }
 
 export default Basket

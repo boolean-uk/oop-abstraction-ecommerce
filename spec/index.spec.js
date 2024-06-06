@@ -15,8 +15,8 @@ describe('Basket', () => {
         name: 'Travis Scott Air Force 1',
         price: 2.748,
         description: 'Leather 100%',
-        quantity: 1,
-      },
+        quantity: 1
+      }
     ])
   })
 
@@ -36,8 +36,8 @@ describe('Basket', () => {
         name: 'Louis Vuitton Christopher GM backpack',
         price: 5.978,
         description: 'PVC 100%',
-        quantity: 1,
-      },
+        quantity: 1
+      }
     ])
   })
 
@@ -69,8 +69,8 @@ describe('Basket', () => {
         name: 'Travis Scott Air Force 1',
         price: 2.748,
         description: 'Leather 100%',
-        quantity: 1,
-      },
+        quantity: 1
+      }
     ])
   })
 
