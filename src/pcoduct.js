@@ -14,7 +14,7 @@ class Product {
       this.#pPrice = price
     } else {
       console.log('The Price is not a number')
-      return 0
+      return false
     }
   }
 

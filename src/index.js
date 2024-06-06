@@ -1,7 +1,7 @@
 import { Basket } from "./basket.js";
 import { Product } from "./pcoduct.js";
 
-const bagel1 = new Product('bagel1', 1.99, 'clasic bagel!')
+const bagel1 = new Product('bagel1', `1.99`, 'clasic bagel!')
 const bagel2 = new Product('bagel2', 2.99, 'clasic bagel!')
 const bagel3 = new Product('bagel3', 3, 'clasic bagel!')
 const bagel4 = new Product('bagel4', 4, 'clasic bagel!')
