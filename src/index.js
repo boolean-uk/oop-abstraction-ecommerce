@@ -1,8 +1,27 @@
 class Basket {
   #productList
+  #quantity
 
   constructor() {
     this.#productList = []
+    this.#quantity = 0
+  }
+
+  get productList() {
+    return this.#productList.map((product) => ({
+      name: product.name,
+      price: product.price,
+      description: product.description,
+      quantity: product.quantity
+    }))
+  }
+
+  get quantity() {
+    this.#productList.forEach((product) => {
+      this.#quantity += product.quantity
+    })
+
+    return this.#quantity
   }
 
   isString(name, description) {
@@ -11,15 +30,15 @@ class Basket {
     )
   }
 
-  isNumber(price) {
-    return typeof price === 'number' && price > 0
+  isNumber(input) {
+    return typeof input === 'number' && input > 0
   }
 
-  addProduct(name, price, description) {
-    if (this.isString(name, description) && this.isNumber(price)) {
-      const newProduct = new Product(name, price, description)
+  addProduct(name, price, description, quantity) {
+    if (this.isString(name, description) && this.isNumber(price) && this.isNumber(quantity)) {
+      const newProduct = new Product(name, price, description, quantity)
       this.#productList.push(newProduct)
-      return this.listProducts()
+      return this.productList
     }
 
     throw new Error('Product properties must be filled in correctly')
@@ -36,28 +55,20 @@ class Basket {
 
     if (this.isProductFound(productToRemove)) {
       this.#productList.splice(productToRemove, 1)
-      return this.listProducts()
+      return this.productList
     }
 
     throw new Error('Product not found')
   }
 
-  listProducts() {
-    return this.#productList.map((product) => ({
-      name: product.name,
-      price: product.price,
-      description: product.description,
-    }))
-  }
-
   outputProductDetails(name) {
     const productToOutput = this.#productList.findIndex(
-        (product) => product.name === name
+      (product) => product.name === name
     )
 
     if (this.isProductFound(productToOutput)) {
-        this.#productList.slice(productToOutput, 1)
-        return this.listProducts()
+      this.#productList.slice(productToOutput, 1)
+      return this.productList
     }
 
     throw new Error('Product not found')
@@ -68,11 +79,13 @@ class Product {
   #name
   #price
   #description
+  #quantity
 
-  constructor(name, price, description) {
+  constructor(name, price, description, quantity) {
     this.#name = name
     this.#price = price
     this.#description = description
+    this.#quantity = quantity
   }
 
   get name() {
@@ -85,6 +98,10 @@ class Product {
 
   get description() {
     return this.#description
+  }
+
+  get quantity() {
+    return this.#quantity
   }
 }
 
