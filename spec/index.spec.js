@@ -23,4 +23,10 @@ describe("eComm Site", () => {
   it("should build a product with name, price, description, and stock level", () => {
     expect(testProduct.name).toEqual("Gizmo");
   });
+
+  it("should allow products to be added to the basket", () => {
+    testBasket.addProduct(testProduct)
+
+    expect(testBasket.contents[0]).toEqual(testProduct)
+  })
 });
