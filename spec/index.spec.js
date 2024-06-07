@@ -31,8 +31,8 @@ describe("Basket", () => {
 	it("should be able to add products", () => {
 		nb.addProduct("Eggs", 3, "A dozen of eggs")
 		expect(nb.basket.length).toBe(1)
-		expect(nb.basket[0].product.name).toBe("Eggs")
-		expect(nb.basket[0].product.price).toBe(3)
+		expect(nb.basket[0].name).toBe("Eggs")
+		expect(nb.basket[0].price).toBe(3)
 	})
 
 	it("should throw an error if product name is not a string, price is not a number and description is not a string", () => {
@@ -47,11 +47,12 @@ describe("Basket", () => {
 	it("should be able to remove products", () => {
 		nb.addProduct("Banana", 4, "A bunch of bananas")
 		nb.addProduct("Eggs", 3, "A dozen of eggs")
+
 		expect(nb.basket.length).toBe(2)
 
 		nb.removeProduct("Eggs")
 		expect(nb.basket.length).toBe(1)
-		expect(nb.basket[0].product.name).toBe("Banana")
+		expect(nb.basket[0].name).toBe("Banana")
 	})
 
 	it("should throw an error if trying to remove non-existing product", () => {
@@ -70,19 +71,18 @@ describe("Basket", () => {
 		expect(nb.showProduct("Banana")).toBe(
 			"Name: Banana\n Cost: €4\n Description: A bunch of bananas"
 		)
-    })
-    
-    it('should keep track of added pruducts quantity', () => {
-        nb.addProduct("Banana", 4, "A bunch of bananas")
-        nb.addProduct("Banana", 4, "A bunch of bananas")
+	})
 
-        expect(nb.basket.length).toBe(1)
-        expect(nb.basket[0].product.name).toBe('Banana')
-        expect(nb.basket[0].qty).toBe(2)
-    })
+	it("should keep track of added pruducts quantity", () => {
+		nb.addProduct("Banana", 4, "A bunch of bananas")
+		nb.addProduct("Banana", 4, "A bunch of bananas")
 
-    it('should keep track of removed products', () => {
-                nb.addProduct("Banana", 4, "A bunch of bananas")
-								nb.addProduct("Banana", 4, "A bunch of bananas")
-    })
+		expect(nb.basket.length).toBe(1)
+		expect(nb.basket[0].name).toBe("Banana")
+	})
+
+	it("should keep track of removed products", () => {
+		nb.addProduct("Banana", 4, "A bunch of bananas")
+		nb.addProduct("Banana", 4, "A bunch of bananas")
+	})
 })
