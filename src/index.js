@@ -22,14 +22,16 @@ class Basket {
 			(prd) => prd.name === name
 		)
 		if (productToRemove !== -1) {
-            const product = this.basket[productToRemove]
+			const product = this.basket[productToRemove]
 			if (product.qty > 1) {
 				product.qtyDecr()
 			} else {
 				this.basket.splice(productToRemove, 1)
 			}
 		} else {
-			throw new Error(`There is no product named ${name} in the basket`)
+			throw new Error(
+				`There is no product named ${name} in the basket`
+			)
 		}
 	}
 
@@ -48,4 +50,3 @@ class Basket {
 export default Basket
 
 const nb = new Basket()
-

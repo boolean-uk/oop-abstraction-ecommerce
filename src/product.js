@@ -24,31 +24,30 @@ class Product {
 		this.#qty += 1
 	}
 	qtyDecr() {
-        this.#qty -= 1
+		this.#qty -= 1
 	}
 
 	getProduct() {
 		return `Name: ${this.#name}\n Cost: €${
 			this.#price
 		}\n Description: ${this.#description}`
-    }
-    
-    get name() {
-        return this.#name
-    }
+	}
 
-    get price() {
-        return this.#price
-    }
+	get name() {
+		return this.#name
+	}
 
-    get description() {
-        return this.#description
-    }
+	get price() {
+		return this.#price
+	}
 
-    get qty() {
-        return this.#qty
-    }
+	get description() {
+		return this.#description
+	}
+
+	get qty() {
+		return this.#qty
+	}
 }
 
 export default Product
-
