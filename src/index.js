@@ -12,6 +12,9 @@ class Product {
     name() {
         return this.#details.name
     }
+    get details() {
+        return {...this.#details}
+    } 
 }
 
 class Basket {
@@ -32,6 +35,42 @@ class Basket {
             names.push(item.name())
         })
         return names
+    }
+    productInfo(item) {
+        let itemExist
+        this.#menu.forEach((i) => {
+            if (i.name() === item) {
+                itemExist = i
+            }
+        })
+        if (itemExist === undefined) {
+            throw "This product doesn't exist"
+        }
+        return itemExist.info()
+    }
+    add(item) {
+        let itemExist
+        this.#menu.forEach((i) => {
+            if (i.name() === item) {
+                itemExist = i
+            }
+        })
+        if (itemExist === undefined) {
+            throw "This product isn't on the menu"
+        }
+        this.#items.push(itemExist.details)
+    }
+    remove(item) {
+        let itemIndex
+        this.#items.forEach((i, index) => {
+            if(i.name === item) {
+                itemIndex = index
+            }
+        })
+        if (itemIndex === undefined) {
+            throw "This product isn't in your basket"
+        }
+        this.#items.splice(itemIndex, 1)
     }
 }
 
