@@ -6,7 +6,13 @@ class Basket {
       add(product) {
         this.products.push(product);
       }
-    
+      remove(productName) {
+        let updatedProducts = this.products.filter(
+          (product) => product.name !== productName
+        );
+        this.products = updatedProducts;
+        return this.products;
+      }
 
 }
 
