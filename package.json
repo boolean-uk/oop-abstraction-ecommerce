@@ -1,15 +1,12 @@
 {
-  "name": "oop-abstraction-ecommerce",
+  "name": "ecommerce",
   "version": "1.0.0",
-  "main": "index.js",
+  "description": "A simple e-commerce application",
+  "main": "src/test.js",
+  "type": "module",
   "scripts": {
     "test": "npx jasmine"
   },
-  "keywords": [],
   "author": "",
-  "license": "ISC",
-  "description": "",
-  "devDependencies": {
-    "jasmine": "^5.1.0"
-  }
+  "license": "ISC"
 }
