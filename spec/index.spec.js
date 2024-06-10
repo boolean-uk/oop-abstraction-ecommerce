@@ -22,6 +22,40 @@ describe('Core Criteria', () => {
         basket.remove("popcorn");
         expect(basket.products.length).toBe(3);
       });
-     
+      it("product should have a name, price and description", () => {
+        expect(() => {
+          new Product();
+        }).toThrow("name is required");
+        expect(() => {
+          new Product("Sandals");
+        }).toThrow("price is required");
+        expect(() => {
+          new Product("Sandals", 56);
+        }).toThrow("description is required");
+    
+        let product;
+        expect(() => {
+          product = new Product("Sandals", 56, "african leather craftwork");
+        }).not.toThrow();
+        expect(product).toBeInstanceOf(Product);
+      });      
+      it("product should have a name, price and description", () => {
+        expect(() => {
+          new Product();
+        }).toThrow("name is required");
+        expect(() => {
+          new Product("Sandals");
+        }).toThrow("price is required");
+        expect(() => {
+          new Product("Sandals", 56);
+        }).toThrow("description is required");
+    
+        let product;
+        expect(() => {
+          product = new Product("Sandals", 56, "african leather craftwork");
+        }).not.toThrow();
+        expect(product).toBeInstanceOf(Product);
+      });
+    
 
 })
