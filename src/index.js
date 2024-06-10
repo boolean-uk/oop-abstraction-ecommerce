@@ -1,4 +1,4 @@
-class Basket {
+export default class Basket {
     constructor() {
         this.products = [];
       }
@@ -35,7 +35,13 @@ export class Product {
       this.price = price;
       this.description = description;
     }
+    print() {
+        let productString = `Product Name: "${this.name}", \nPrice: "${this.price}", \nDescription: "${this.description}"`;
+        console.log(productString);
+        return productString;
+      }
+
 }  
 
 
-export default Basket
+

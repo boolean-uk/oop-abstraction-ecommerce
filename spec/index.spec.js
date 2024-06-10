@@ -56,6 +56,11 @@ describe('Core Criteria', () => {
         }).not.toThrow();
         expect(product).toBeInstanceOf(Product);
       });
-    
+      it("product should output its details as a well formatted string containing its name, price and description", () => {
+        let product = new Product("bananas", 2.5, "fresh yellow bananas");
+        let productString = `Product Name: "bananas", \nPrice: "2.5", \nDescription: "fresh yellow bananas"`;
+        expect(product.print()).toBe(productString);
+      });
+      
 
 })
