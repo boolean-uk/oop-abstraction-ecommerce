@@ -1,4 +1,4 @@
-const Basket = require("/Users/samisaeed/Boolean/oop-abstraction-ecommerce/src/index.js");
+const Basket = require("../src/index.js");
 
 describe("Basket", () => {
   it("should add a product", function () {
